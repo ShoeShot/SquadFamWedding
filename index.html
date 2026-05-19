@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love is in Bloom | Wedding Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* --- Color Palette & Variables --- */
+        :root {
+            --bg-color: #faf7f2;
+            --text-main: #2c2c2c;
+            --lilac: #d0c4e8;
+            --light-blue: #b9d8f8;
+            --sage: #9cb389;
+            --pink: #ffb6c1;
+            --peach: #ffb28b;
+            --pale-yellow: #fff59d;
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        /* --- Global Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        header {
+            display: flex;
+            width: 100%;
+            height: 50px;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            opacity: 0.8;
+        }
+
+        .nav-home { background-color: var(--lilac); }
+        .nav-story { background-color: var(--light-blue); }
+        .nav-details { background-color: var(--sage); }
+        .nav-rsvp { background-color: var(--pink); }
+
+        /* --- Hero Carousel Placeholder --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-image: url('https://immich.telegraphtech.ca/api/assets/0f62ce5a-a625-47d1-886a-1676427a19ab/thumbnail?key=sONYoCl13RKKOc4BSrVg0Q7UbqwGuolnPMtU_wlpdBTCsffIuRqfijKdTHjvHYElaA8&size=preview&c=DhkGDQIcdlCYOMn3OVR4igO8oDID.jpg');
+            background-size: cover;
+            background-position: center 55%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        .carousel-btn {
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .carousel-indicator {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* --- Main Content Container --- */
+        .main-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        /* Floral Side Decorations */
+        .floral-dec {
+            position: absolute;
+            top: 0;
+            width: 150px;
+            opacity: 0.9;
+        }
+        .floral-left {
+            left: 0;
+        }
+        .floral-right {
+            right: 0;
+        }
+
+        /* --- Typography --- */
+        .title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .title .script {
+            font-family: var(--font-script);
+            font-size: 4.5rem;
+            text-transform: none;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+
+        .subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .date {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .save-the-date {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: #555;
+            margin-bottom: 60px;
+        }
+
+        /* --- Collage & RSVP Section --- */
+        .bottom-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .side-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 200px;
+        }
+
+        .side-images img {
+            width: 100%;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* --- RSVP Form --- */
+        .rsvp-container {
+            background-color: #fffaf4;
+            border: 1px solid #e0dcd3;
+            border-radius: 4px;
+            width: 500px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .color-bar {
+            display: flex;
+            height: 15px;
+            width: 100%;
+        }
+
+        .color-bar div { flex: 1; }
+
+        .rsvp-content {
+            padding: 40px;
+        }
+
+        .rsvp-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .rsvp-title .script {
+            font-family: var(--font-script);
+            font-size: 3rem;
+            font-weight: normal;
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d4cfc7;
+            background-color: #faf7f2;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--sage);
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--sage);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button.submit-btn:hover {
+            background-color: #8aa376;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: var(--font-sans);
+            color: #666;
+            border-top: 1px solid #eee;
+            margin-top: 60px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .bottom-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .side-images {
+                display: none; /* Hide side images on small screens */
+            }
+            .floral-dec {
+                display: none;
+            }
+            .rsvp-container {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+    </header>
+
+    <section class="hero">
+    </section>
+
+    <main class="main-content">
+        <img src="https://cdn.pixabay.com/photo/2017/12/10/16/22/watercolor-3010189_1280.png" alt="" class="floral-dec floral-left">
+        <img src="https://cdn.pixabay.com/photo/2017/12/10/16/22/watercolor-3010189_1280.png" alt="" class="floral-dec floral-right" style="transform: scaleX(-1);">
+
+        <h1 class="title">Love IS IN BLOOM.</h1>
+        <p class="subtitle">Welcoming You to Celebrate<br>the Love of Taylor & Jordan.</p>
+        
+        <h2 class="date">JULY 31, 2027</h2>
+        <p class="save-the-date">SAVE THE DATE</p>
+
+        <div class="bottom-section">
+            
+            <div class="side-images">
+                <img src="https://immich.telegraphtech.ca/api/assets/5199d30b-a2ac-4d37-b17a-785f54f76443/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=lBkKDQJ8aK%2BIZ3ind4mJeZ%2BOm5Br.jpg">
+                <img src="https://immich.telegraphtech.ca/api/assets/87bf98af-89af-4091-9611-7e224d885fba/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=GjkKDQQ0ZKBqF6Z4hJaHVwVWNXBk.jpg">
+            </div>
+
+            <div class="rsvp-container">
+                <div class="color-bar">
+                    <div style="background-color: var(--lilac);"></div>
+                    <div style="background-color: var(--light-blue);"></div>
+                    <div style="background-color: var(--sage);"></div>
+                    <div style="background-color: var(--pink);"></div>
+                    <div style="background-color: var(--peach);"></div>
+                    <div style="background-color: var(--pale-yellow);"></div>
+                </div>
+                
+                <div class="rsvp-content">
+                    <h3 class="rsvp-title"><span class="script">Kindly</span> RSVP</h3>
+                    
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="fullName">Your Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">Number of Guests</label>
+                                <select id="guests" name="guests">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="diet">Dietary Preferences</label>
+                                <select id="diet" name="diet">
+                                    <option value="none">No Restrictions</option>
+                                    <option value="vegetarian">Vegetarian Delight</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="gluten-free">Gluten-Free</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="song">Song Request</label>
+                            <input type="text" id="song" name="song" placeholder="">
+                        </div>
+
+                        <button type="submit" class="submit-btn">Submit RSVP</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="side-images">
+                <img sizes="auto"
+                 src="Abstract-Matisse-Flower.svg">
+                <img src="Tulip-Solid.svg">
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>[Your Name] & [Partner's Name] | 2027</p>
+    </footer>
+
+</body>
+</html>
