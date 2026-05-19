@@ -68,11 +68,12 @@
         /* --- Hero Carousel Placeholder --- */
         .hero {
             position: relative;
-            width: 100%;
+            max-width: 60%;
             height: 500px;
             background-image: url('https://immich.telegraphtech.ca/api/assets/0f62ce5a-a625-47d1-886a-1676427a19ab/thumbnail?key=sONYoCl13RKKOc4BSrVg0Q7UbqwGuolnPMtU_wlpdBTCsffIuRqfijKdTHjvHYElaA8&size=preview&c=DhkGDQIcdlCYOMn3OVR4igO8oDID.jpg');
             background-size: cover;
             background-position: center 55%;
+            margin:auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -106,7 +107,7 @@
             background-size:cover;
             background-position: center;
             border-radius: 5%;
-            box-shadow: 0 0 8px 8px transparent inset;
+            mask-image:linear-gradient(to bottom, transparent,black,black);
             position: relative;
             max-width: 1200px;
             margin: 80px auto 40px;
@@ -135,6 +136,7 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             text-transform: uppercase;
+            
         }
 
         .title .script {
