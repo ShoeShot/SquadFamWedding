@@ -417,40 +417,45 @@
                     <h3 class="rsvp-title"><span class="script">Kindly</span> RSVP</h3>
                     
                     <form action="#" method="POST">
+                        
                         <div class="form-group">
                             <label for="fullName">Your Full Name</label>
-                            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
+                            <input type="text" id="fullName" name="Guest Name" placeholder="Jane Doe" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                            <input type="email" id="email" name="Email Address" placeholder="jane@example.com" required>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="guests">Number of Guests</label>
-                                <select id="guests" name="guests">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4+</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="diet">Dietary Preferences</label>
-                                <select id="diet" name="diet">
-                                    <option value="none">No Restrictions</option>
-                                    <option value="vegetarian">Vegetarian</option>
-                                    <option value="vegan">Vegan</option>
-                                    <option value="gluten-free">Gluten-Free</option>
-                                </select>
-                            </div>
-                        </div>
-
+                        <!-- Track Attendance Responses -->
                         <div class="form-group">
-                            <label for="song">Song Request</label>
-                            <input type="text" id="song" name="song" placeholder="I gotta dance to...">
+                            <label>Will You Attend?</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="Attendance Status" value="Accepts with Pleasure" checked required>
+                                    Accepts with Pleasure
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="Attendance Status" value="Declines with Regret" required>
+                                    Declines with Regret
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- This container dynamically hides if a guest declines -->
+                        <div id="extraFields" class="conditional-fields">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="guests">Number of Guests</label>
+                                    <select id="guests" name="Total Guests Attending">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4+</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" class="submit-btn">Submit RSVP</button>
@@ -470,5 +475,18 @@
         <p>Taylor & Jordan | 2027</p>
     </footer>
 
+    <!-- JavaScript to handle conditional form logic cleanly -->
+    <script>
+        document.querySelectorAll('input[name="Attendance Status"]').forEach((radio) => {
+            radio.addEventListener('change', (e) => {
+                const extraFields = document.getElementById('extraFields');
+                if (e.target.value === 'Declines with Regret') {
+                    extraFields.classList.add('hidden');
+                } else {
+                    extraFields.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
