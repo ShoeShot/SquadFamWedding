@@ -73,8 +73,8 @@
             background-image: url('https://immich.telegraphtech.ca/api/assets/0f62ce5a-a625-47d1-886a-1676427a19ab/thumbnail?key=sONYoCl13RKKOc4BSrVg0Q7UbqwGuolnPMtU_wlpdBTCsffIuRqfijKdTHjvHYElaA8&size=preview&c=DhkGDQIcdlCYOMn3OVR4igO8oDID.jpg');
             background-size: auto;
             background-position: 15% 55%;
-            margin:auto;
-            border-radius:5%/10%;
+            margin: auto;
+            border-radius: 5%/10%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -111,9 +111,9 @@
             padding: 0 20px;
             text-align: center;
             background-image: url("botanical-floral-mockup-illustration_53876-79036.svg");
-            background-size:cover;
+            background-size: cover;
             background-position: center;
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
             border-radius: 5%;
             box-shadow: 0 0 8px 8px white inset;
         }
@@ -139,7 +139,6 @@
             letter-spacing: 2px;
             margin-bottom: 20px;
             text-transform: uppercase;
-            
         }
 
         .title .script {
@@ -304,14 +303,14 @@
             margin-top: 60px;
         }
 
-        /* --- Responsive Design --- */
+        /* --- Responsive Design (Tablet) --- */
         @media (max-width: 900px) {
             .bottom-section {
                 flex-direction: column;
                 align-items: center;
             }
             .side-images {
-                display: none; /* Hide side images on small screens */
+                display: none;
             }
             .floral-dec {
                 display: none;
@@ -321,18 +320,49 @@
                 max-width: 500px;
             }
         }
+
+        /* --- Responsive Design (Mobile/Phones) --- */
+        @media (max-width: 600px) {
+            .hero {
+                max-width: 95%; /* Expand hero to fit screen */
+                height: 300px; /* Reduce hero height */
+            }
+            .main-content {
+                margin: 40px auto 20px;
+            }
+            .title {
+                font-size: 2.2rem; /* Shrink title */
+            }
+            .title .script {
+                font-size: 3rem; 
+                display: block; /* Stacks the script font above the rest of the title */
+                margin-right: 0;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .date {
+                font-size: 1.8rem;
+            }
+            .rsvp-content {
+                padding: 25px 20px; /* Reduce padding inside the form box */
+            }
+            .form-row {
+                flex-direction: column; /* Stacks the dropdown menus on top of each other */
+                gap: 0;
+            }
+        }
     </style>
 </head>
     
 <body>
-        <section class="hero">
-    </section>
+    <section class="hero"></section>
 
     <main class="main-content">
         <img src="https://cdn.pixabay.com/photo/2017/12/10/16/22/watercolor-3010189_1280.png" alt="" class="floral-dec floral-left">
         <img src="https://cdn.pixabay.com/photo/2017/12/10/16/22/watercolor-3010189_1280.png" alt="" class="floral-dec floral-right" style="transform: scaleX(-1);">
 
-        <h1 class="title">Love IS IN BLOOM.</h1>
+        <h1 class="title"><span class="script">Love</span> IS IN BLOOM.</h1>
         <p class="subtitle">Welcoming You to Celebrate<br>the Love of Taylor & Jordan.</p>
         
         <h2 class="date">JULY 31, 2027</h2>
@@ -341,8 +371,8 @@
         <div class="bottom-section">
             
             <div class="side-images">
-                <img src="https://immich.telegraphtech.ca/api/assets/5199d30b-a2ac-4d37-b17a-785f54f76443/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=lBkKDQJ8aK%2BIZ3ind4mJeZ%2BOm5Br.jpg">
-                <img src="https://immich.telegraphtech.ca/api/assets/87bf98af-89af-4091-9611-7e224d885fba/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=GjkKDQQ0ZKBqF6Z4hJaHVwVWNXBk.jpg">
+                <img src="https://immich.telegraphtech.ca/api/assets/5199d30b-a2ac-4d37-b17a-785f54f76443/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=lBkKDQJ8aK%2BIZ3ind4mJeZ%2BOm5Br.jpg" alt="Side Image 1">
+                <img src="https://immich.telegraphtech.ca/api/assets/87bf98af-89af-4091-9611-7e224d885fba/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=GjkKDQQ0ZKBqF6Z4hJaHVwVWNXBk.jpg" alt="Side Image 2">
             </div>
 
             <div class="rsvp-container">
