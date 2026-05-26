@@ -471,6 +471,473 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love is in Bloom | Wedding Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- Color Palette & Variables --- */
+        :root {
+            --bg-color: #fcfbfa; /* Slightly lighter, cleaner background */
+            --text-main: #2c2c2c;
+            --lilac: #d0c4e8;
+            --light-blue: #b9d8f8;
+            --sage: #9cb389;
+            --pink: #ffb6c1;
+            --peach: #ffb28b;
+            --pale-yellow: #fff59d;
+            
+            --font-serif: 'Playfair Display', serif;
+            --font-script: 'Great Vibes', cursive;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        /* --- Global Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Navigation --- */
+        header {
+            display: flex;
+            width: 100%;
+            height: 50px;
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-item:hover { opacity: 0.8; }
+
+        .nav-home { background-color: var(--lilac); }
+        .nav-story { background-color: var(--light-blue); }
+        .nav-details { background-color: var(--sage); }
+        .nav-rsvp { background-color: var(--pink); }
+
+        /* --- Hero Carousel Placeholder --- */
+        .hero {
+            position: relative;
+            max-width: 60%;
+            height: 500px;
+            background-image: url('https://immich.telegraphtech.ca/api/assets/0f62ce5a-a625-47d1-886a-1676427a19ab/thumbnail?key=sONYoCl13RKKOc4BSrVg0Q7UbqwGuolnPMtU_wlpdBTCsffIuRqfijKdTHjvHYElaA8&size=preview&c=DhkGDQIcdlCYOMn3OVR4igO8oDID.jpg');
+            background-size: cover; /* Changed to cover for better scaling */
+            background-position: center;
+            margin: 40px auto; /* Added some top margin */
+            border-radius: 20px; /* Smoother border radius */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06); /* Soft, elegant shadow */
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        /* --- Main Content Container --- */
+        .main-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            text-align: center;
+            background-image: url("botanical-floral-mockup-illustration_53876-79036.svg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slight tint to ensure text readability */
+            background-blend-mode: overlay;
+            animation: fadeUp 1s ease-out 0.2s both; /* Slight delay after hero */
+        }
+
+        /* Floral Side Decorations */
+        .floral-dec {
+            position: absolute;
+            top: -20px;
+            width: 150px;
+            opacity: 0.8;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); /* Adds depth to the florals */
+        }
+        .floral-left { left: 0; }
+        .floral-right { right: 0; }
+
+        /* --- Typography --- */
+        .title {
+            font-family: var(--font-serif);
+            font-size: 3.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+        }
+
+        .title .script {
+            font-family: var(--font-script);
+            font-size: 5.5rem;
+            text-transform: none;
+            margin-right: 15px;
+            font-weight: normal;
+            color: var(--sage); /* Accent color for the script */
+            display: inline-block;
+            transform: translateY(10px); /* Adjusts baseline alignment */
+        }
+
+        .subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            color: #555;
+            font-style: italic;
+        }
+
+        .date {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .save-the-date {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            color: #888;
+            margin-bottom: 60px;
+        }
+
+        /* --- Collage & RSVP Section --- */
+        .bottom-section {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; /* Helps alignment */
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .side-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 220px;
+            padding-top: 30px; /* Vertically centers them slightly alongside the form */
+        }
+
+        .side-images img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .side-images img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Stagger the second image for an organic scrapbook look */
+        .side-images img:nth-child(2) {
+            transform: rotate(-2deg);
+        }
+
+        /* --- RSVP Form --- */
+        .rsvp-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            width: 500px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            overflow: hidden;
+            text-align: left;
+            position: relative;
+        }
+
+        .color-bar {
+            display: flex;
+            height: 6px; /* Slimmer, more elegant */
+            width: 100%;
+        }
+
+        .color-bar div { flex: 1; }
+
+        .rsvp-content {
+            padding: 50px 40px; /* More breathing room */
+        }
+
+        .rsvp-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 35px;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+        .rsvp-title .script {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            font-weight: normal;
+            margin-right: 10px;
+            color: var(--pink);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e2ddd3;
+            background-color: #faf7f2;
+            border-radius: 6px; /* Softer edges */
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        /* Soft glowing effect on focus */
+        input:focus, select:focus {
+            border-color: var(--sage);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(156, 179, 137, 0.15); 
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--sage);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(156, 179, 137, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        button.submit-btn:hover {
+            background-color: #8aa376;
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 6px 20px rgba(156, 179, 137, 0.5);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #999;
+            margin-top: 60px;
+        }
+
+        /* --- Responsive Design (Tablet) --- */
+        @media (max-width: 1000px) {
+            .bottom-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .side-images {
+                display: none;
+            }
+            .floral-dec {
+                display: none;
+            }
+            .rsvp-container {
+                width: 100%;
+                max-width: 550px;
+            }
+            .hero {
+                max-width: 80%;
+            }
+        }
+
+        /* --- Responsive Design (Mobile/Phones) --- */
+        @media (max-width: 600px) {
+            .hero {
+                max-width: 95%; 
+                height: 300px; 
+                margin: 20px auto;
+                border-radius: 12px;
+            }
+            .main-content {
+                margin: 20px auto;
+                padding: 30px 15px;
+                border-radius: 12px;
+            }
+            .title {
+                font-size: 2.2rem; 
+            }
+            .title .script {
+                font-size: 3.5rem; 
+                display: block; 
+                margin-right: 0;
+                transform: translateY(0);
+            }
+            .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+            .date {
+                font-size: 1.8rem;
+            }
+            .rsvp-content {
+                padding: 35px 20px; 
+            }
+            .form-row {
+                flex-direction: column; 
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+    
+<body>
+    <section class="hero"></section>
+
+    <main class="main-content">
+        <img src="https://cdn.pixabay.com/photo/2017/12/10/16/22/watercolor-3010189_1280.png" alt="" class="floral-dec floral-left">
+        <img src="https://cdn.pixabay.com/photo/2017/12/10/16/22/watercolor-3010189_1280.png" alt="" class="floral-dec floral-right" style="transform: scaleX(-1);">
+
+        <h1 class="title"><span class="script">Love</span> IS IN BLOOM.</h1>
+        <p class="subtitle">Welcoming You to Celebrate<br>the Love of Taylor & Jordan.</p>
+        
+        <h2 class="date">JULY 31, 2027</h2>
+        <p class="save-the-date">SAVE THE DATE</p>
+
+        <div class="bottom-section">
+            
+            <div class="side-images">
+                <img src="https://immich.telegraphtech.ca/api/assets/5199d30b-a2ac-4d37-b17a-785f54f76443/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=lBkKDQJ8aK%2BIZ3ind4mJeZ%2BOm5Br.jpg" alt="Side Image 1">
+                <img src="https://immich.telegraphtech.ca/api/assets/87bf98af-89af-4091-9611-7e224d885fba/thumbnail?key=mZ48CZHiHRTdXmFgK-4nbkjL4dvAqUziGeMTM9HC-xpZ2tak4LwU5RzkImk1UMq3-9s&size=preview&c=GjkKDQQ0ZKBqF6Z4hJaHVwVWNXBk.jpg" alt="Side Image 2">
+            </div>
+
+            <div class="rsvp-container">
+                <div class="color-bar">
+                    <div style="background-color: var(--lilac);"></div>
+                    <div style="background-color: var(--light-blue);"></div>
+                    <div style="background-color: var(--sage);"></div>
+                    <div style="background-color: var(--pink);"></div>
+                    <div style="background-color: var(--peach);"></div>
+                    <div style="background-color: var(--pale-yellow);"></div>
+                </div>
+                
+                <div class="rsvp-content">
+                    <h3 class="rsvp-title"><span class="script">Kindly</span> RSVP</h3>
+                    
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="fullName">Your Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Jane Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guests">Number of Guests</label>
+                                <select id="guests" name="guests">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="diet">Dietary Preferences</label>
+                                <select id="diet" name="diet">
+                                    <option value="none">No Restrictions</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="gluten-free">Gluten-Free</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="song">Song Request</label>
+                            <input type="text" id="song" name="song" placeholder="I gotta dance to...">
+                        </div>
+
+                        <button type="submit" class="submit-btn">Submit RSVP</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="side-images">
+                <img src="https://images.unsplash.com/photo-1582293041079-7814c2f12063?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Floral Cupcakes">
+                <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="More Food">
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Taylor & Jordan | 2027</p>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love is in Bloom | Wedding Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <style>
         /* --- Color Palette & Variables --- */
