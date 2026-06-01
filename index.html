@@ -458,7 +458,8 @@
                 <div class="rsvp-content">
                     <h3 class="rsvp-title"><span class="script">Kindly</span> RSVP</h3>
                     
-                    <form action="#" method="POST">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="ff5d6553-1ab6-407c-b515-ee699aeb8341">
                         
                         <div class="form-group">
                             <label for="fullName">Your Full Name</label>
@@ -476,11 +477,11 @@
                             <div class="radio-group">
                                 <label class="radio-label">
                                     <input type="radio" name="Attendance Status" value="Accepts with Pleasure" checked required>
-                                    Accepts with Pleasure
+                                    Will Attend
                                 </label>
                                 <label class="radio-label">
                                     <input type="radio" name="Attendance Status" value="Declines with Regret" required>
-                                    Declines with Regret
+                                    Will Not Attend
                                 </label>
                             </div>
                         </div>
