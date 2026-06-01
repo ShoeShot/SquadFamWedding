@@ -31,12 +31,11 @@
 
         body {
             background-color: var(--bg-color);
-            /* Global Background Setup */
             background-image: url("botanical-floral-mockup-illustration_53876-79036.svg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Keeps background fixed during scroll for a parallax effect */
+            background-attachment: fixed;
             color: var(--text-main);
             font-family: var(--font-sans);
             line-height: 1.6;
@@ -47,6 +46,11 @@
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDownIn {
+            from { opacity: 0; transform: translateY(-10px); max-height: 0; }
+            to { opacity: 1; transform: translateY(0); max-height: 100px; }
         }
 
         /* --- Navigation --- */
@@ -100,18 +104,14 @@
             margin: 40px auto;
             padding: 60px 40px;
             text-align: center;
-            
-            /* Blends content with the global background seamlessly */
             background-color: rgba(252, 251, 250, 0.88) transparent; 
-            backdrop-filter: blur(10px); /* Gives a premium frosted-glass effect */
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.05);
             animation: fadeUp 1s ease-out 0.2s both; 
         }
 
-        /* Floral Side Decorations */
         .floral-dec {
             position: absolute;
             top: -20px;
@@ -193,13 +193,8 @@
             transition: transform 0.3s ease;
         }
 
-        .side-images img:hover {
-            transform: scale(1.02);
-        }
-
-        .side-images img:nth-child(2) {
-            transform: rotate(-2deg);
-        }
+        .side-images img:hover { transform: scale(1.02); }
+        .side-images img:nth-child(2) { transform: rotate(-2deg); }
 
         /* --- RSVP Form --- */
         .rsvp-container {
@@ -219,10 +214,7 @@
         }
 
         .color-bar div { flex: 1; }
-
-        .rsvp-content {
-            padding: 50px 40px; 
-        }
+        .rsvp-content { padding: 50px 40px; }
 
         .rsvp-title {
             font-family: var(--font-serif);
@@ -241,18 +233,9 @@
             color: var(--pink);
         }
 
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
+        .form-group { margin-bottom: 24px; }
+        .form-row { display: flex; gap: 20px; }
+        .form-row .form-group { flex: 1; }
 
         label {
             display: block;
@@ -265,7 +248,6 @@
             color: #777;
         }
 
-        /* Custom Attendance Radio Styling */
         .radio-group {
             display: flex;
             flex-direction: column;
@@ -294,7 +276,7 @@
 
         /* Conditional Field Container Animation */
         .conditional-fields {
-            max-height: 400px;
+            max-height: 800px; /* Expanded slightly to account for incoming dynamic inputs */
             opacity: 1;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -305,6 +287,11 @@
             opacity: 0;
             margin-bottom: 0;
             pointer-events: none;
+        }
+
+        /* Dynamic input animations */
+        .dynamic-guest-field {
+            animation: slideDownIn 0.4s ease-out forwards;
         }
 
         input[type="text"],
@@ -352,7 +339,6 @@
             box-shadow: 0 6px 20px rgba(156, 179, 137, 0.5);
         }
 
-        /* --- Footer --- */
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -363,64 +349,23 @@
             margin-top: 60px;
         }
 
-        /* --- Responsive Design (Tablet) --- */
+        /* --- Responsive Design --- */
         @media (max-width: 1000px) {
-            .bottom-section {
-                flex-direction: column;
-                align-items: center;
-            }
-            .side-images {
-                display: none;
-            }
-            .floral-dec {
-                display: none;
-            }
-            .rsvp-container {
-                width: 100%;
-                max-width: 550px;
-            }
-            .hero {
-                max-width: 80%;
-            }
+            .bottom-section { flex-direction: column; align-items: center; }
+            .side-images, .floral-dec { display: none; }
+            .rsvp-container { width: 100%; max-width: 550px; }
+            .hero { max-width: 80%; }
         }
 
-        /* --- Responsive Design (Mobile/Phones) --- */
         @media (max-width: 600px) {
-            .hero {
-                max-width: 95%; 
-                height: 300px; 
-                margin: 20px auto 0;
-                border-radius: 12px;
-            }
-            .main-content {
-                margin: 20px auto;
-                padding: 40px 15px;
-                border-radius: 12px;
-                background-color: rgba(252, 251, 250, 0.93) transparent; /* Darken slightly on mobile for outdoor screen readability */
-            }
-            .title {
-                font-size: 2.2rem; 
-            }
-            .title .script {
-                font-size: 3.5rem; 
-                display: block; 
-                margin-right: 0;
-                transform: translateY(0);
-            }
-            .subtitle {
-                font-size: 1.2rem;
-                margin-bottom: 30px;
-            }
-            .date {
-                font-size: 1.8rem;
-            }
-            .rsvp-content {
-                padding: 35px 20px; 
-            }
-            .form-row {
-                flex-direction: column; 
-                gap: 0;
-            }
+            .hero { max-width: 95%; height: 300px; margin: 20px auto 0; border-radius: 12px; }
+            .main-content { margin: 20px auto; padding: 40px 15px; border-radius: 12px; }
+            .title { font-size: 2.2rem; }
+            .title .script { font-size: 3.5rem; display: block; margin-right: 0; transform: translateY(0); }
+            .subtitle { font-size: 1.2rem; margin-bottom: 30px; }
+            .date { font-size: 1.8rem; }
+            .rsvp-content { padding: 35px 20px; }
+            .form-row { flex-direction: column; gap: 0; }
         }
     </style>
 </head>
@@ -472,7 +417,6 @@
                             <input type="email" id="email" name="Email Address" placeholder="jane@example.com" required>
                         </div>
 
-                        <!-- Track Attendance Responses -->
                         <div class="form-group">
                             <label>Will You Attend?</label>
                             <div class="radio-group">
@@ -487,7 +431,6 @@
                             </div>
                         </div>
 
-                        <!-- This container dynamically hides if a guest declines -->
                         <div id="extraFields" class="conditional-fields">
                             <div class="form-row">
                                 <div class="form-group">
@@ -500,6 +443,8 @@
                                     </select>
                                 </div>
                             </div>
+                            
+                            <div id="additionalGuestsContainer"></div>
                         </div>
 
                         <button type="submit" class="submit-btn">Submit RSVP</button>
@@ -519,18 +464,64 @@
         <p>Taylor & Jordan | 2027</p>
     </footer>
 
-    <!-- JavaScript to handle conditional form logic cleanly -->
     <script>
+        const guestDropdown = document.getElementById('guests');
+        const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
+        const extraFields = document.getElementById('extraFields');
+
+        // Function to update the additional guest name inputs dynamically
+        function updateAdditionalGuestFields() {
+            // If the parent section is hidden (user selected "Will Not Attend"), don't generate fields
+            if (extraFields.classList.contains('hidden')) {
+                additionalGuestsContainer.innerHTML = '';
+                return;
+            }
+
+            const totalGuests = parseInt(guestDropdown.value, 10);
+            additionalGuestsContainer.innerHTML = ''; // Reset container
+
+            // If selected '4+', we loop 3 times (for guests 2, 3, and 4)
+            const loops = totalGuests === 4 ? 3 : totalGuests - 1;
+
+            for (let i = 1; i <= loops; i++) {
+                const guestNum = i + 1;
+                
+                // Create structures matching original styling
+                const formGroup = document.createElement('div');
+                formGroup.className = 'form-group dynamic-guest-field';
+
+                const label = document.createElement('label');
+                label.setAttribute('for', `guestName${guestNum}`);
+                label.textContent = `Guest ${guestNum} Name`;
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.id = `guestName${guestNum}`;
+                input.name = `Additional Guest ${guestNum} Name`;
+                input.placeholder = `Guest ${guestNum} Full Name`;
+                input.required = true; // Makes sure they fill it out if they're coming
+
+                formGroup.appendChild(label);
+                formGroup.appendChild(input);
+                additionalGuestsContainer.appendChild(formGroup);
+            }
+        }
+
+        // Attendance radio trigger handler
         document.querySelectorAll('input[name="Attendance Status"]').forEach((radio) => {
             radio.addEventListener('change', (e) => {
-                const extraFields = document.getElementById('extraFields');
                 if (e.target.value === 'Declines with Regret') {
                     extraFields.classList.add('hidden');
                 } else {
                     extraFields.classList.remove('hidden');
                 }
+                // Recalculate fields on visibility toggle
+                updateAdditionalGuestFields();
             });
         });
+
+        // Dropdown selection trigger handler
+        guestDropdown.addEventListener('change', updateAdditionalGuestFields);
     </script>
 </body>
 </html>
